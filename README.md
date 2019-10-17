@@ -1,2 +1,2 @@
 # MyTAM
-Matlab program
+Matlab program for TAM
