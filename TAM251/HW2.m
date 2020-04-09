@@ -27,6 +27,19 @@ c = (a^2 + b^2)^0.5;
 dl = strain * c / (a/c);
 vpa(atand(dl/b));
 
+%% 2.5
+a = 491; % mm
+b = 406; % mm
+db = 3; % mm
+dd = 1; % mm
+
+a1 = a - db;
+b1 = b - dd;
+c = (a^2 + b^2)^0.5;
+c1 = (a1^2 + b^2)^0.5;
+
+epsilon = (c - c1)/c;
+
 %%
 r = 6371
 x1 = 199.6512 * sind(49.8903);
