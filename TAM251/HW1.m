@@ -52,15 +52,13 @@ L = 1680; % mm
 w = 6; % kN/m
 Ac = 55; % mm^2
 
-a = a/1000; b = b/1000; c = c/1000; d = d/1000; L = L/1000; w = w*1000; Ac = Ac/1000000;
-
 syms x;
 f = x * w * (L-x) / L;
 int1 = int(f, 0, L);
 fy = int1 / (a+b);
 fx = fy / (c+d) * (a+b);
 ff = (fy^2 + fx^2)^0.5;
-vpa(ff/Ac);
+vpa(ff/Ac/2);
 
 %% 1.9
 W = 3; % kN
