@@ -12,9 +12,6 @@ oq = rOQ(1)*i + rOQ(2)*j;
 qp = rQP(1)*i + rQP(2)*j; 
 vpa(oq + qp);
 
-%% 304
-% skip
-
 %% 320
 theta = 60;
 rij = [3,-3];
@@ -22,8 +19,6 @@ i = [cosd(theta), -sind(theta)];
 j = [sind(theta), cosd(theta)];
 vpa(rij(1)*i + rij(2)*j);
 
-%% 321
-% skip
 
 %% 428
 x = -6;
