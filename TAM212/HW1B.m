@@ -19,19 +19,21 @@ vr = [r(1), r(2), 0];
 cross(vw, cross(vw, vr));
 
 %% 970
-rij = [2.798301086621326,-2.878645866357132];
-ruv = [0.3234857070633068,4.001555696551886];
+% 这题比较特殊，直接解ruv0 == ruv因为精度关系会解不出
+% 因此只能这么写了，即通过找x1、x2的中相同的解来求x
+rij = [-1.7359610329265556,-3.6297190725875423];
+ruv = [-2.9916440230224497,-2.6904436982139677];
 
 syms x;
-i = [cos(pi+x), -sin(pi+x)];
-j = [sin(pi+x), cos(pi+x)];
-eq = rij(1) * i + rij(2) * j == ruv;
-[x] = solve(eq, x);
-vpa(x)
-
-sita1 = pi + atan(rij(1) / rij(2));
-sita2 = atan(ruv(1) / ruv(2));
-vpa(2*pi - sita1 + sita2)
+R = [cos(x), sin(x);
+    -sin(x), cos(x)];
+ruv0 = R * rij';
+eq1 = ruv0(1) == ruv(1);
+eq2 = ruv0(2) == ruv(2);
+x1 = solve(eq1, x);
+x2 = solve(eq2, x);
+vpa(x1)
+vpa(x2)
 
 
 
