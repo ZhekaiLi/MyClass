@@ -49,7 +49,7 @@ E = 217; % GPa
 P = 592; % kN
 theta = 56; % degrees
 
-fc = (P * tand(theta) * L/2 - P * L/2) / L;
+fc = (P * tand(theta) * L/2 + P * L/2) / L;
 f = fc / tand(theta);
 stress = f / Ac;
 d = stress / E * L;
