@@ -21,15 +21,20 @@ vpa(f(0));
 % pass
 
 %% 756
-avec = [2,-5]
-adotvec = [-3,-1]
+avec = [4,3,0];
+adotvec = [2,4,0];
 
 syms t;
-ra = adotvec * t + avec;
-fra(t) = (ra(1)^2 + ra(2)^2)^0.5;
-%ff(t) = dot(ra, ra) / fra;
-f(t) = diff(ra);
-vpa(f(0))
+va = adotvec * t + avec;
+% % 1
+% f = (va(1)^2 + va(2)^2)^0.5;
+% df = diff(f, t);
+% vpa(subs(df, t, 0))
+
+% 2
+dva = diff(va, t);
+vpa(subs(dva, t, 0))
+
 
 
 
