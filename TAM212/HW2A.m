@@ -17,8 +17,25 @@ rPQ(x) = (xrPQ(1)^2 + xrPQ(2)^2)^0.5;
 f(x) = diff(rPQ(x));
 vpa(f(0));
 
-%% 391 459 505 686
+%% 391 459 686
 % pass
+
+%% 505
+theta = 3;
+omega = -4;
+
+syms t sita;
+fsita = omega * t + theta;
+fr = 3 - sin(4 * fsita + 3);
+
+dfr = diff(fr, t);
+dfsita = diff(fsita, t);
+
+er = [cos(theta), sin(theta)];
+esita = [-sin(theta), cos(theta)];
+
+v = subs(dfr, t, 0) * er + subs(fr, t, 0) * subs(dfsita, t, 0) * esita;
+vpa(v);
 
 %% 756
 avec = [4,3,0];
