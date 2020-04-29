@@ -46,19 +46,20 @@ vpa([sigma * 1e3, tao * 1e3]);
 % similar to 8.4
 %% 8.4
 h = 2; % in
-a = 31; % in
-P = 6; % kips
-s1 = 294; % psi
-s2 = 150; % psi
+a = 30; % in
+P = 5000; % kips
+s1 = 3000; % ksi
+s2 = 343; % psi
 
 syms b1 b2;
-eq1 = b1 * 3*h * s1 == P;
+I = b1 * (3*h)^3 / 12;
+eq1 = s1 == P*a * 3/2*h / I;
 
 I = b2 * (3*h)^3 / 12;
 Q = b2*h * h;
 eq2 = s2 == P * Q / I / b2;
 [b1, b2] = solve([eq1, eq2], [b1, b2]);
-vpa([b1, b2]);
+vpa([b1, b2])
 
 %% 8.5
 b = 33; % mm
