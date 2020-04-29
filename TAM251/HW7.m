@@ -21,16 +21,15 @@ t1 = 25; % mm
 t2 = 24; % mm
 Mz = 1404; % N.m
 
-A1 = t2 * (b + 2*t1);
-A2 = h * t1;
+A1 = (b + 2*t1) * (h + 2*t2);
+A2 = b * h;
 
-ybar = (A1 * t2/2 + A1 * (t2 + h + t2/2) + 2 * A2 * (t2 + h/2)) / (2*(A1 + A2));
-I1 = (b + 2*t1) * t2^3 / 12;
-I2 = t1 * h^3 / 12;
-Iz = 2*(I1 + I2) + A1 * ((3/2)*t2 + h - ybar)^2 + A1 * (ybar - t2/2)^2 + 2 * A2 * (t2 + h/2 - ybar)^2;
+ybar = (A1 - A2)*(t2 + h/2)/(A1 - A2);
+Iz = 1/12 * ((b+2*t1)*(h+2*t2)^3 - b*h^3);
+
 vpa(ybar);
-vpa(Iz / 1e6);
-vpa(ybar * Mz / (Iz / 1e3));
+vpa(Iz);
+vpa(ybar * Mz / Iz);
 
 %% 7.8
 t = 15; % mm
