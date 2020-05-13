@@ -1,2 +1,2 @@
-# MyTAM
+# My
 Matlab program for TAM
