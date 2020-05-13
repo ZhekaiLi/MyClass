@@ -60,8 +60,8 @@ eq2 = Fr / E1 / Ar == Ft / E2 / At;
 [Ft, Fr] = solve([eq1, eq2], [Ft, Fr]);
 stress = Ft / At;
 vpa(stress*1000);
-% ע�������ţ���������ѹ����
-% ע�ⵥλ��1GPa = 1000MPa
+% 注意正负号：拉伸正，压缩负
+% 注意单位：1GPa = 1000MPa
 
 %% 4.4
 k1 = 900000; % kN/m
