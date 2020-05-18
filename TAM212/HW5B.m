@@ -12,7 +12,7 @@ xleft = 1;
 xright = 2;
 Px = 2;
 Py = 3;
-% 求Ic
+% 脟贸Ic
 If = rou * ((Px - x)^2 + (Py - y)^2);
 I = int(int(If, y, ydown, yup), x, xleft, xright);
 vpa(I);
@@ -80,23 +80,6 @@ eq = Fq + Fp == m2 * aC;
 [x y] = solve(eq, [x y]);
 vpa([x y]);
 
-%% 629
-rou = 3;
-
-syms x y;
-yup = x^2 + 2*x + 2;
-ydown = 2*x^2 - 9;
-xleft = -2;
-xright = 2;
-% 求质心
-A = int(yup - ydown, x, xleft, xright);
-xbar = 1/A * int(x * (yup - ydown), xleft, xright);
-ybar = 1/A * int((yup + ydown)/2 * (yup - ydown), x, xleft, xright);
-% 求Ic
-If = rou * ((xbar - x)^2 + (ybar - y)^2);
-I = int(int(If, y, ydown, yup), x, xleft, xright);
-vpa(I);
-
 %% 595
 m1 = 8;
 m2 = 4;
@@ -111,6 +94,23 @@ r1 = [x, y, 0];
 eq = (r1 * m1 + r2 * m2 + r3 * m3) / (m1 + m2 + m3) == rC;
 [x y] = solve(eq, [x y]);
 vpa([x y]);
+
+%% 629
+rou = 3;
+
+syms x y;
+yup = x^2 + 2*x + 2;
+ydown = 2*x^2 - 9;
+xleft = -2;
+xright = 2;
+% 脟贸脰脢脨脛
+A = int(yup - ydown, x, xleft, xright);
+xbar = 1/A * int(x * (yup - ydown), xleft, xright);
+ybar = 1/A * int((yup + ydown)/2 * (yup - ydown), x, xleft, xright);
+% 脟贸Ic
+If = rou * ((xbar - x)^2 + (ybar - y)^2);
+I = int(int(If, y, ydown, yup), x, xleft, xright);
+vpa(I);
 
 %% 741
 L1 = 5;
