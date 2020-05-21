@@ -35,7 +35,7 @@ eq = vQ == vC + cross(omg, rCQ);
 omega = solve(eq, omega);
 vpa(omega);
 
-%% 698
+%% 689
 r = 1;
 aQMag = 12;
 omg = [0, 0, 3];
@@ -71,7 +71,7 @@ vpa(aQ);
 
 
 %% 980
-% 与地面接触的加速度 = [0, omega(3)^2 * r, 0]
+% 脫毛木艠膫膰藵脫麓慕木脛藕脫脣女艣膶 = [0, omega(3)^2 * r, 0]
 omega = [0, 0, 6];
 aQ = [3,-8, 0];
 
