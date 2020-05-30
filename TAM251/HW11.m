@@ -12,7 +12,7 @@ Iz = 0.000054; % m^4
 P = P * 1e3; M = M * 1e3; E = E * 1e9;
 
 syms x C1 C2 C3;
-M1(x) = P*L-M - P * x;
+M1(x) = P*L - M - P * x;
 
 y1dei(x) = int(M1, x) + C1;
 C1 = solve(y1dei(0) == 0);
@@ -30,6 +30,28 @@ y2ei(x) = int(y2dei, x) + C3;
 
 vpa(y1ei / (E*Iz));
 vpa(y2ei / (E*Iz));
+
+%% 11.4
+L = 8;
+syms x;
+y1(x) = -L^2/16 * x + 1/12 * x^3;
+y1d(x) = diff(y1, x);
+y1dd(x) = diff(y1d, x);
+
+syms C C1 C2;
+y2dd(x) = -1/2*x + C;
+C = solve(y2dd(L/2) == y1dd(L/2), C);
+y2dd(x) = -1/2*x + C;
+
+y2d(x) = int(y2dd, x) + C1;
+C1 = solve(y2d(L/2) == y1d(L/2), C1);
+y2d(x) = int(y2dd, x) + C1;
+
+y2(x) = int(y2d, x) + C2;
+C2 = solve(y2(L/2) == y1(L/2), C2);
+y2(x) = int(y2d, x) + C2;
+
+vpa(y2);
 
 %% 11.5
 L = 5;
@@ -82,13 +104,13 @@ Iz = 0.000042; % m^4
 
 w = w * 1e3; E = E * 1e9;
 M = w * L^2 / 12;
-% w deflection slope at B C
+% 令AB段存在一个w
 wdb = -w * (L/2)^4 / (8*E*Iz);
 wsb = -w * (L/2)^3 / (6*E*Iz);
 wdc = wdb + wsb * L/2;
-
+% 从A至C的W
 Wdc = -w * L^4 / (8*E*Iz);
-% m deflection slope at B C
+% m
 mdc = -M * L^2 / (2*E*Iz);
 
 vpa((mdc + Wdc - wdc)*1e3);
@@ -128,42 +150,5 @@ msc = M * L / (E*Iz);
 
 vpa([(wdc + mdc)*1e3, wsc + msc]);
 
-
-
-
-
-
-
-% w = w * 1e3; E = E * 1e9;
-% canshu = E * Iz;
-% 
-% M0 = w * L^2 / 24;
-% % y1(x) 0-L/2
-% syms x;
-% V1(x) = w * L/2 - w*x; 
-% syms C1;
-% M1(x) = int(V1, x) + C1;
-% C1 = solve(M1(L/2) == M0, C1);
-% M1(x) = int(V1, x) + C1; % y1''
-% 
-% y1dei(x) = int(M1, x);
-% y1ei(x) = int(y1dei, x);
-% % y2(x)
-% M2 = M0;
-% syms C2;
-% y2dei(x) = int(M2, x) + C2;
-% C2 = solve(y2dei*(L/2) == y1dei(L/2), C2);
-% y2dei(x) = int(M2, x) + C2;
-% syms C3;
-% y2ei(x) = int(y2dei, x) + C3;
-% C3 = solve(y2ei(L/2) == y1ei(L/2), C3);
-% y2ei(x) = int(y2dei, x) + C3;
-% 
-% vpa(-y2ei(L) * 1e3 / canshu)
-% vpa(-y2dei(L) / canshu)
-% 
-% 
-% w = w*1e3; E = E*1e9;
-% ei = E * Iz;
 
 
