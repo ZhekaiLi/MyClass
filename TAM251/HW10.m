@@ -9,7 +9,7 @@ tauxy = 11;
 sigma1 = 13.034441853748634;
 sigma2 = -16.034441853748632;
 
-% ÓÃ·´Èı½Çº¯Êı¼ÆËã½Ç¶ÈÊ±Ó¦ÓÃatan2£¨¸ù¾İ×ø±êµÃ³öÈ·¶¨µÄ½Ç¶È£©£¬¶ø²»ÊÇatan£¨Á½¸ö½Ç¶È£©
+% ç”¨åä¸‰è§’å‡½æ•°è®¡ç®—è§’åº¦æ—¶åº”ç”¨atan2ï¼ˆæ ¹æ®åæ ‡å¾—å‡ºç¡®å®šçš„è§’åº¦ï¼‰ï¼Œè€Œä¸æ˜¯atanï¼ˆä¸¤ä¸ªè§’åº¦ï¼‰
 thetap1 = atan2d((sigma1 - sigmax),  tauxy);
 % thetap1 = 0.5*atan2d( 2*tauxy, (sigmax - sigmay))
 
@@ -37,34 +37,7 @@ x = -26.5651;
 sxp = (sx + sy)/2 + (sx - sy)/2 * cosd(2*x) + txy * sind(2*x);
 syp = (sx + sy)/2 - (sx - sy)/2 * cosd(2*x) - txy * sind(2*x);
 txpyp = -(sx - sy)/2 * sind(2*x) + txy * cosd(2*x);
-% 
-% function y = getp(s, theta, sx, sy, txy)
-% y = 0;
-% for c = 1:2
-%     x = theta(c);
-%     if ifclose(s, (sx + sy)/2 + (sx - sy)/2 * cosd(2*x) + txy * sind(2*x)) == 1
-%         y = x;
-%     end
-% end
-% end
-% 
-% function y = gets(t, theta, sx, sy, txy)
-% y = 0;
-% for c = 1:2
-%     x = theta(c);
-%     if ifclose(s, -(sx - sy)/2 * sind(2*x) + txy * cosd(2*x)) == 1
-%         y = x;
-%     end
-% end
-% end
-% 
-% function y = ifclose(a, b)
-% if abs(a - b) / abs(a) <= 0.001
-%     y = 1;
-% else 
-%     y = 0;
-% end
-% end
+
 
 %% 10.4
 p = 1272; % kPa
@@ -110,10 +83,10 @@ R = ((sx - smid)^2 + txy^2)^0.5;
 s1 = smid + R;
 s2 = smid - R;
 
-% ¹ØÓÚthetapÈçºÎÑ¡Ôñ£º
-% ½«sx-syÖ±ÏßĞı×ªµ½Óës1-s2ÖØºÏ£¬ÇÒsx,s1ÖØºÏ£¬ËùĞèÒªµÄ×îĞ¡½Ç¶ÈµÄ¶ş·ÖÖ®Ò»
-% ÀıÈçËã³öthetap = 10£¬µ«ÊÇxÔÚÔ²µÄ×óÉÏ½Ç£¨ÕâÒâÎ¶×ÅĞèÒªË³Ê±ÕëĞı×ª£©,
-% Òò´Ëthetap = 10 - 90 = -80
+% å…³äºthetapå¦‚ä½•é€‰æ‹©ï¼š
+% å°†sx-syç›´çº¿æ—‹è½¬åˆ°ä¸s1-s2é‡åˆï¼Œä¸”sx,s1é‡åˆï¼Œæ‰€éœ€è¦çš„æœ€å°è§’åº¦çš„äºŒåˆ†ä¹‹ä¸€
+% ä¾‹å¦‚ç®—å‡ºthetap = 10ï¼Œä½†æ˜¯xåœ¨åœ†çš„å·¦ä¸Šè§’ï¼ˆè¿™æ„å‘³ç€éœ€è¦é¡ºæ—¶é’ˆæ—‹è½¬ï¼‰,
+% å› æ­¤thetap = 10 - 90 = -80
 thetap1 = atand(txy / ((sx - sy)/2)) / 2;
 R;
 fs = sigmaY / s1;
@@ -168,6 +141,7 @@ savg;
 thetap1 = atand(txy / ((sx - sy)/2)) / 2;
 
 thetas1 = atand(-(sx - sy)/2 / txy) / 2;
+
 %% 10.10/11
 sx = -27;
 sy = 19;
