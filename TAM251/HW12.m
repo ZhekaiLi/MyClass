@@ -112,17 +112,6 @@ yfc = F*(2*L)^3/(3*E*Iz);
 F = solve(ymc - yfc == del, F);
 vpa(F/1e3);
 
-%%
-sx = 3000;
-sy = 1832;
-t = 1040.5;
-R = (((sx-sy)/2)^2 + t^2)^0.5;
-s1 = (sx-sy)/2 + R;
-s2 = (sx-sy)/2 - R;
-thetas1 = atand(-(sx - sy)/2 / t) / 2;
-vpa(thetas1);
-
-
 
 
 
